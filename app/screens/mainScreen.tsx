@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import {
-  SafeAreaView,
-  StyleSheet,
   Text,
   View,
+  SafeAreaView,
   FlatList,
   ActivityIndicator,
-  Button,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-
+import tw from "twrnc";
 import SingleMovieScreen from "./singleMovieScreen";
 
 interface Movie {
@@ -48,10 +46,14 @@ export default function MainScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>🎬 Animated Movies</Text>
+    <SafeAreaView style={tw`pt-8 flex-1`}>
+      <Text
+        style={tw`text-2xl mb-2 text-white bg-[#373b69] font-bold py-4 text-center flex`}
+      >
+        🎬 KidsFlix
+      </Text>
 
-      <View>
+      <View style={tw`flex-1`}>
         {loading ? (
           <ActivityIndicator size="large" color="purple" />
         ) : (
@@ -60,12 +62,14 @@ export default function MainScreen() {
             keyExtractor={(item: { id: number }) => item.id.toString()}
             renderItem={({ item }) => <SingleMovieScreen movie={item} />}
             numColumns={2}
-            contentContainerStyle={styles.list}
+            contentContainerStyle={tw`pb-20`}
           />
         )}
       </View>
 
-      <View style={styles.baseBar}>
+      <View
+        style={tw`absolute py-2 bottom-0 left-0 right-0 bg-[#373b69] h-12 flex-row items-center justify-around`}
+      >
         <Icon name="home" size={30} color="white" />
         <Icon name="favorite" size={30} color="white" />
         <Icon name="person" size={30} color="white" />
@@ -73,34 +77,3 @@ export default function MainScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 10,
-    paddingTop: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-  list: {
-    paddingBottom: 20,
-  },
-  baseBar: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "black",
-    height: 50,
-    alignItems: "center",
-
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-});
