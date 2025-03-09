@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "FirstTrial",
-    "slug": "FirstTrial",
+    "name": "Kidsflix",
+    "slug": "KidsFlix",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/assets/logo.jpeg",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/logo.jpeg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

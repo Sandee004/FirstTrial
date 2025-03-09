@@ -50,7 +50,7 @@ export default function MainScreen() {
       <Text
         style={tw`text-2xl mb-2 text-white bg-[#373b69] font-bold py-4 text-center flex`}
       >
-        🎬 KidsFlix
+        KidsFlix
       </Text>
 
       <View style={tw`flex-1`}>
@@ -65,14 +65,6 @@ export default function MainScreen() {
             contentContainerStyle={tw`pb-20`}
           />
         )}
-      </View>
-
-      <View
-        style={tw`absolute py-2 bottom-0 left-0 right-0 bg-[#373b69] h-12 flex-row items-center justify-around`}
-      >
-        <Icon name="home" size={30} color="white" />
-        <Icon name="favorite" size={30} color="white" />
-        <Icon name="person" size={30} color="white" />
       </View>
     </SafeAreaView>
   );

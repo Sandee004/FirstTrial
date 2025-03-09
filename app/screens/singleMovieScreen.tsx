@@ -1,7 +1,10 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "./Navigation";
+import tw from "twrnc";
 
-// Define the props interface for TypeScript
 interface Movie {
   title: string;
   poster_path: string | null;
@@ -11,44 +14,33 @@ interface Movie {
 }
 
 const SingleMovieScreen: React.FC<{ movie: Movie }> = ({ movie }) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   const imageUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : "default_image_url";
+    : "https://via.placeholder.com/500x750?text=No+Image";
 
   return (
-    <View style={styles.card}>
-      <Image source={{ uri: imageUrl }} style={styles.image} />
-      <Text style={styles.movieTitle} numberOfLines={2}>
-        {movie.title}
-      </Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("MovieDetailScreen", { movie })}
+    >
+      <View style={tw`bg-white rounded-xl shadow-lg m-2`}>
+        <Image
+          source={{ uri: imageUrl }}
+          style={tw`w-[160px] h-[240px] rounded-t-xl`}
+          resizeMode="cover"
+        />
+        <View style={tw`p-3 w-[160px] h-[73px]`}>
+          <Text
+            style={tw`text-base font-semibold text-gray-800 text-center`}
+            numberOfLines={2}
+          >
+            {movie.title}
+          </Text>
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 export default SingleMovieScreen;
-
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    backgroundColor: "#f8f8f8",
-    margin: 8,
-    borderRadius: 10,
-    overflow: "hidden",
-    alignItems: "center",
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-  },
-  image: {
-    width: "100%",
-    height: 200,
-  },
-  movieTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-    padding: 8,
-  },
-});
