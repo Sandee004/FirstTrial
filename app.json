@@ -29,13 +29,14 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "updates": {
+      "url": "https://u.expo.dev/cf5f2140-a3d5-42a8-888a-703469c35105"
+    },
     "extra": {
       "eas": {
-        "projectId": "1e4dd2bd-5d5b-4f1f-8fbd-86a04bcc9e28"
+        "projectId": "cf5f2140-a3d5-42a8-888a-703469c35105"
       }
     },
-    "updates": {
-      "url": "https://u.expo.dev/1e4dd2bd-5d5b-4f1f-8fbd-86a04bcc9e28"
-    }
+    "owner": "sandeetee"
   }
 }
